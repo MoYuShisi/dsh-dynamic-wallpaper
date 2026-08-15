@@ -1,0 +1,315 @@
+/* Dynamic-wallpaper settings row: header with enable switch, then the
+ * renderer/upload/slider fields. Follows the Appearance row's group chrome
+ * (padding 16/0, hairline separator; the section column strips it when last). */
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--dsw-alias-border-l2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--dsw-alias-label-primary);
+}
+
+/* Enable switch: a compact pill with a sliding knob. */
+.switch {
+  box-sizing: border-box;
+  position: relative;
+  width: 36px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 999px;
+  background: var(--dsw-alias-bg-module-platform);
+  cursor: pointer;
+  transition: background var(--ds-transition-duration-fast, 120ms) ease;
+}
+
+.switch[data-on] {
+  background: var(--dsw-alias-brand-primary);
+  border-color: var(--dsw-alias-brand-primary);
+}
+
+.switchKnob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--dsw-alias-label-primary);
+  transition: transform var(--ds-transition-duration-fast, 120ms) ease;
+}
+
+.switch[data-on] .switchKnob {
+  transform: translateX(16px);
+}
+
+.hiddenLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.value {
+  font-variant-numeric: tabular-nums;
+  color: var(--dsw-alias-label-primary);
+}
+
+.select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 8px;
+  background: var(--dsw-alias-bg-module-platform);
+  font: inherit;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--dsw-alias-label-primary);
+}
+
+.fileRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.button {
+  padding: 5px 12px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 8px;
+  background: var(--dsw-alias-bg-module-platform);
+  font: inherit;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--dsw-alias-label-primary);
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.removeButton {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--dsw-alias-state-error-primary);
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.fileName {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--dsw-alias-label-primary);
+}
+
+.range {
+  width: 100%;
+  accent-color: var(--dsw-alias-brand-primary);
+}
+
+.range:disabled {
+  opacity: 0.45;
+}
+
+.note {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.hint {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.colorRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.colorInput {
+  width: 40px;
+  height: 28px;
+  padding: 2px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 8px;
+  background: var(--dsw-alias-bg-module-platform);
+  cursor: pointer;
+}
+
+.resetButton {
+  padding: 5px 12px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 8px;
+  background: var(--dsw-alias-bg-module-platform);
+  font: inherit;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--dsw-alias-label-primary);
+  cursor: pointer;
+}
+
+.resetButton:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.errorNote {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-state-error-primary);
+}
+
+.subField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.subField .range {
+  flex: 1;
+}
+
+.subField .select {
+  flex: 1;
+}
+
+.imageList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.imageRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.imageIndex {
+  flex: 0 0 20px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-secondary);
+  text-align: center;
+}
+
+.miniButton {
+  padding: 3px 8px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 6px;
+  background: var(--dsw-alias-bg-module-platform);
+  font: inherit;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-primary);
+  cursor: pointer;
+}
+
+.miniButton:hover:not(:disabled) {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.miniButton:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.applyRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.pendingNote {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.applyButton {
+  padding: 7px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--dsw-alias-brand-primary);
+  font: inherit;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--dsw-alias-label-primary-foreground);
+  cursor: pointer;
+}
+
+.applyButton:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.applyButton:disabled {
+  opacity: 0.45;
+  cursor: default;
+}

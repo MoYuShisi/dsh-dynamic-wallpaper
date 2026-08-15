@@ -1,0 +1,12 @@
+# Convenience patch for mounting the dynamic-wallpaper plugin.
+#
+# Use one of:
+#   1. Profile patch (recommended): append this insert to
+#      %USERPROFILE%\.dsh\profiles\web\cordis.patch.yml  (or $DSH_HOME/...)
+#      after installing the package into the profile (see README.md).
+#   2. Launch overlay:  pnpm dsh web --patch ./scratch-plugins/dsh-dynamic-wallpaper/cordis.yml
+#      (the plugin package must still be resolvable from the profile
+#      directory — the overlay only contributes the row).
+- insert:
+    - id: dynamic-wallpaper
+      name: 'dsh-dynamic-wallpaper'

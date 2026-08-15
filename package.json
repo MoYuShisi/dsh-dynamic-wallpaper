@@ -1,0 +1,59 @@
+{
+  "name": "dsh-dynamic-wallpaper",
+  "version": "0.1.0",
+  "description": "DSH web client plugin: dynamic wallpaper (static image / GIF / video / canvas particles) with a settings row in Settings → General, persisted in localStorage.",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "scripts": {
+    "bundle": "tsdown",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "4.0.1",
+    "@deepseek-ai/dsh-client-locale": "0.1.0-rc.5",
+    "@deepseek-ai/dsh-client-runtime": "0.1.0-rc.5",
+    "@deepseek-ai/dsh-client-ui-settings": "0.1.0-rc.5",
+    "@deepseek-ai/dsh-client-ui-slots": "0.1.0-rc.5",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.1",
+    "@deepseek-ai/dsh-client-locale": "0.1.0-rc.5",
+    "@deepseek-ai/dsh-client-runtime": "0.1.0-rc.5",
+    "@deepseek-ai/dsh-client-ui-settings": "0.1.0-rc.5",
+    "@deepseek-ai/dsh-client-ui-slots": "0.1.0-rc.5",
+    "@types/react": "~18.3.1",
+    "react": "^18.2.0",
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3"
+  }
+}

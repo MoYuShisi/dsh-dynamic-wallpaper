@@ -1,0 +1,43 @@
+{
+  // Editor/typecheck project for the plugin. Compiler flags come from the DSH
+  // client face. The paths map below is self-contained and resolves the
+  // imported @deepseek-ai packages to their BUILT type declarations
+  // (lib/types/**), so a typecheck pulls no repo source in and stays quiet;
+  // react resolves to @types/react in the repo's pnpm store (react 18 ships
+  // no bundled types). Requires the repo's `pnpm run build` artifacts to
+  // exist. The bundle build (tsdown) does not typecheck and needs no tsconfig.
+  "extends": "../../tsconfig.base.client.json",
+  "compilerOptions": {
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "incremental": false,
+    "noEmit": true,
+    "paths": {
+      "@deepseek-ai/cordis": [
+        "../../vendor/cordis/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-slots": [
+        "../../packages/client/ui-slots/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-runtime/client": [
+        "../../packages/client/runtime/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-locale/client": [
+        "../../packages/client/locale/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-settings/client": [
+        "../../packages/client/ui-settings/lib/types/client/index.d.ts"
+      ],
+      "react": [
+        "../../node_modules/.pnpm/@types+react@18.3.31/node_modules/@types/react"
+      ],
+      "react/jsx-runtime": [
+        "../../node_modules/.pnpm/@types+react@18.3.31/node_modules/@types/react/jsx-runtime.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
